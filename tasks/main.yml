@@ -1,2 +1,10 @@
 ---
 # tasks file for gbs.go
+
+- name: install go
+  yum:
+    name: golang
+    state: latest
+  when: ansible_os_family == RedHat
+
+
