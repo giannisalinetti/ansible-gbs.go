@@ -3,20 +3,29 @@
 
 - name: install go on Fedora systems
   dnf:
-    name: golang
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - golang
+    - golang-docs
   when: ansible_distribution == "Fedora" and ansible_distribution_major_version >= 23
 
 
 - name: install go on Red Hat Enterprise Linux and CentOS systems
   yum:
-    name: golang
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - golang
+    - golang-docs
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
 
 - name: install go on Debian and Ubuntu systems
   apt:
-    name: golang
+    name: "{{ item }}"
     state: latest
+  with_items:
+    - golang
+    - golang-docs
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
