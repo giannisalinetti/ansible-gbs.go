@@ -1,7 +1,7 @@
 ---
 # tasks file for gbs.go
 
-- name: install go
+- name: install go on RedHat systems
   yum:
     name: golang
     state: latest
